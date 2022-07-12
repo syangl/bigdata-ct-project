@@ -12,7 +12,12 @@ import com.nd.ct.common.bean.Val;
  */
 public enum Names implements Val {
     //namespace
-    TOPIC("ct"),
+    NAMESPACE("ct"),//命名空间
+    TOPIC("ct"),//主题
+    TABLE("ct:calllog"),//通话日志
+    CF_CALLER("caller"),//列族，主叫
+    CF_CALLEE("callee"),//列族，被叫
+    CF_INFO("info"),//列族
     ;
     private String name;
     private Names(String name){
