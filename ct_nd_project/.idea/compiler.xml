@@ -10,6 +10,7 @@
         <module name="ct_producer" />
         <module name="ct_consumer_coprocessor" />
         <module name="ct_consumer" />
+        <module name="ct_mapreduce" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />

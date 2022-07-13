@@ -13,6 +13,7 @@
         <module>ct_producer</module>
         <module>ct_consumer</module>
         <module>ct_consumer_coprocessor</module>
+        <module>ct_mapreduce</module>
     </modules>
 
     <properties>
