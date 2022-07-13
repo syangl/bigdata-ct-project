@@ -8,9 +8,10 @@ import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
-import org.checkerframework.checker.units.qual.C;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName: HBaseDao
@@ -29,8 +30,10 @@ public class HBaseDao extends BaseHBaseDao {
         //创建表
         createTableXX(
                 Names.TABLE.getValue(),
+                "com.nd.ct.consumer.coprocessor.InsertCalleeCoprocessor",
                 ValueConstant.REGION_COUNT,
-                Names.CF_INFO.getValue()
+                Names.CF_CALLER.getValue(),
+                Names.CF_CALLEE.getValue()
         );
         end();
     }
@@ -58,25 +61,51 @@ public class HBaseDao extends BaseHBaseDao {
             计算分区号:让分区号没有规律就可以,hashMap
         */
         //rowKey=regionNum+call1+time+call2+duration
-        String rowKey = genRegionNum(call1, calltime) + "_" + call1 + "_" + calltime + "_" + call2 + "_" + duration;
-        Put put = new Put(Bytes.toBytes(rowKey));
-        byte[] family = Bytes.toBytes(Names.CF_INFO.getValue());
+        //主叫用户
+        String callerRowKey = genRegionNum(call1, calltime) + "_" + call1 + "_" + calltime + "_" + call2 + "_" + duration + "_1";
+        Put callerPut = new Put(Bytes.toBytes(callerRowKey));
+        byte[] callerfamily = Bytes.toBytes(Names.CF_CALLER.getValue());
         //增加列
-        put.addColumn(family, Bytes.toBytes("call1"), Bytes.toBytes(call1));
-        put.addColumn(family, Bytes.toBytes("call2"), Bytes.toBytes(call2));
-        put.addColumn(family, Bytes.toBytes("calltime"), Bytes.toBytes(calltime));
-        put.addColumn(family, Bytes.toBytes("duration"), Bytes.toBytes(duration));
+        callerPut.addColumn(callerfamily, Bytes.toBytes("call1"), Bytes.toBytes(call1));
+        callerPut.addColumn(callerfamily, Bytes.toBytes("call2"), Bytes.toBytes(call2));
+        callerPut.addColumn(callerfamily, Bytes.toBytes("calltime"), Bytes.toBytes(calltime));
+        callerPut.addColumn(callerfamily, Bytes.toBytes("duration"), Bytes.toBytes(duration));
+        //1表示主叫
+        callerPut.addColumn(callerfamily,Bytes.toBytes("flag"),Bytes.toBytes("1"));
+
+        /**
+         *         //被叫用户（添加协处理后就不需要在这里插入被叫记录）
+         *         String calleeRowKey = genRegionNum(call2, calltime) + "_" + call2 + "_" + calltime + "_" + call1 + "_" + duration + "_0";
+         *         Put calleePut=new Put(Bytes.toBytes(calleeRowKey));
+         *         byte[] calleefamily=Bytes.toBytes(Names.CF_CALLEE.getValue());
+         *         //增加列
+         *         calleePut.addColumn(calleefamily,Bytes.toBytes("call2"),Bytes.toBytes(call2));
+         *         calleePut.addColumn(calleefamily,Bytes.toBytes("call1"),Bytes.toBytes(call1));
+         *         calleePut.addColumn(calleefamily,Bytes.toBytes("calltime"),Bytes.toBytes(calltime));
+         *         calleePut.addColumn(calleefamily,Bytes.toBytes("duration"),Bytes.toBytes(duration));
+         *         //0表示被叫
+         *         calleePut.addColumn(calleefamily,Bytes.toBytes("flag"),Bytes.toBytes("0"));
+         */
+
         //3.保存数据
-        putData(Names.TABLE.getValue(), put);
+        List<Put> puts = new ArrayList<>();
+        puts.add(callerPut);
+        //添加协处理后就不需要在这里插入被叫记录
+        //puts.add(calleePut);
+        putData(Names.TABLE.getValue(), puts);
     }
 
-    //保存数据
-    protected void putData(String name, Put put) throws IOException {
+    /**
+     * 增加多条数据
+     * @param name
+     * @param puts
+     */
+    protected void putData(String name, List<Put> puts) throws IOException {
         //获取表对象
         Connection conn = getConnect();
         Table table = conn.getTable(TableName.valueOf(name));
         //增加数据
-        table.put(put);
+        table.put(puts);
         //释放资源
         table.close();
     }

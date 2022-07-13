@@ -12,6 +12,7 @@
         <module>ct_common</module>
         <module>ct_producer</module>
         <module>ct_consumer</module>
+        <module>ct_consumer_coprocessor</module>
     </modules>
 
     <properties>

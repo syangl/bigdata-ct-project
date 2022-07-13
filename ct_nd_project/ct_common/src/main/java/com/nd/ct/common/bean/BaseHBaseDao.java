@@ -2,6 +2,7 @@ package com.nd.ct.common.bean;
 
 import com.nd.ct.common.constact.Names;
 import com.nd.ct.common.constact.ValueConstant;
+import com.nd.ct.common.util.DateUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.Admin;
@@ -11,6 +12,7 @@ import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -151,7 +153,7 @@ public abstract class BaseHBaseDao {
      * @param families
      */
     protected void createTableXX(String name,String...families) throws IOException {
-        createTableXX(name,null,families);
+        createTableXX(name,null,null,families);
     }
     /**
      * 创建表，有预分区
@@ -160,7 +162,7 @@ public abstract class BaseHBaseDao {
      * @param families
      * @throws IOException
      */
-    protected void createTableXX(String name,Integer regionCount,String...families) throws IOException {
+    protected void createTableXX(String name,String copreccessorClass,Integer regionCount,String...families) throws IOException {
         Admin admin=getAdmin();
         TableName tableName = TableName.valueOf(name);
         if (admin.tableExists(tableName)) {
@@ -168,7 +170,7 @@ public abstract class BaseHBaseDao {
             deleteTable(name);
         }
         //创建表
-        createTable(name,regionCount,families);
+        createTable(name,copreccessorClass,regionCount,families);
     }
     /**
      * 创建表
@@ -177,7 +179,7 @@ public abstract class BaseHBaseDao {
      * @param families
      * @throws IOException
      */
-    private void createTable(String name,Integer regionCount,String...families) throws IOException {
+    private void createTable(String name,String copreccessorClass,Integer regionCount,String...families) throws IOException {
         Admin admin=getAdmin();
         TableName tableName = TableName.valueOf(name);
         //表的描述器
@@ -192,6 +194,10 @@ public abstract class BaseHBaseDao {
             HColumnDescriptor hColumnDescriptor=
                     new HColumnDescriptor(family);
             hTableDescriptor.addFamily(hColumnDescriptor);
+        }
+        //协处理器
+        if(copreccessorClass!=null&&!"".equals(copreccessorClass)){
+            hTableDescriptor.addCoprocessor(copreccessorClass);
         }
         //增加预分区
         if(regionCount==null||regionCount<=0){
@@ -231,7 +237,7 @@ public abstract class BaseHBaseDao {
      * @param date
      * @return
      */
-    protected int genRegionNum(String tel,String date){
+    protected int genRegionNum(String tel, String date){
         //15623513131,取后四位没有规律的
         String userCode=tel.substring(tel.length()-4);
         //20220707120000,获取年月
@@ -245,5 +251,48 @@ public abstract class BaseHBaseDao {
         int regionNum=crc% ValueConstant.REGION_COUNT;
         return regionNum;
     }
+
+    /**
+     * 获取查询时startrow,stoprow集合
+     * @param tel
+     * @param start
+     * @param end
+     * @return
+     */
+    protected List<String[]> getStartRowKeys(String tel, String start, String end) {
+        List<String[]> rowKeyss = new ArrayList<>();
+        //开始时间
+        String startTime = start.substring(0, 6);
+        //结束时间
+        String endTime = end.substring(0, 6);
+        //把日期转化成日历
+        Calendar startCal = Calendar.getInstance();
+        startCal.setTime(DateUtil.parse(startTime,"yyyyMM"));
+        Calendar endCal=Calendar.getInstance();
+        endCal.setTime(DateUtil.parse(endTime,"yyyyMM"));
+        //判断
+        while (startCal.getTimeInMillis() <= endCal.getTimeInMillis()) {
+            //当前时间
+            String nowTime = DateUtil.format(startCal.getTime(),"yyyyMM");
+            //获取分区号
+            int regionNum = genRegionNum(tel, nowTime);
+            //1_156_202203~1_156_202203|
+            String startRow=regionNum+"_"+tel+"_"+nowTime;
+            String stopRow=startRow+"|";
+            String[] rowKeys={startRow,stopRow};
+            rowKeyss.add(rowKeys);
+            //月份+1
+            startCal.add(Calendar.MONTH,1);
+        }
+        return rowKeyss;
+    }
+
+    /*测试
+    public static void main(String[] args) {
+        for (String[] strings : getStartRowKeys("15623513131", "202203", "202208")) {
+            System.out.println(strings[0]+"~"+strings[1]);
+        }
+    }
+     */
 
 }
