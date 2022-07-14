@@ -4,6 +4,7 @@ com\nd\ct\common\bean\Data.class
 com\nd\ct\common\bean\DataOut.class
 com\nd\ct\common\util\DateUtil.class
 com\nd\ct\common\bean\DataIn.class
+com\nd\ct\common\util\JdbcUtil.class
 com\nd\ct\common\bean\BaseHBaseDao.class
 com\nd\ct\common\constact\ValueConstant.class
 com\nd\ct\common\bean\Producer.class
