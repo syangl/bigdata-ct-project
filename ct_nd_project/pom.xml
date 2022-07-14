@@ -15,6 +15,7 @@
         <module>ct_consumer_coprocessor</module>
         <module>ct_mapreduce</module>
         <module>ct_analysis</module>
+        <module>ct_cache</module>
     </modules>
 
     <properties>

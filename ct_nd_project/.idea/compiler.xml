@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ct_consumer" />
         <module name="ct_mapreduce" />
+        <module name="ct_cache" />
         <module name="ct_producer" />
         <module name="ct_common" />
         <module name="ct_consumer_coprocessor" />

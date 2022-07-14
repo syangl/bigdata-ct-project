@@ -7,6 +7,7 @@ import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.PathOutputCommitter;
 import org.apache.hadoop.mapreduce.lib.output.PathOutputCommitterFactory;
+import redis.clients.jedis.Jedis;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,10 +26,12 @@ public class MySQLTextOutputFormat extends OutputFormat<Text, Text> {
 
     protected static class MySQLRecordWriter extends RecordWriter<Text, Text> {
         private Connection connection = null;
-
+        private Jedis jedis=null;
         public MySQLRecordWriter() {
             //获取资源
             connection = JdbcUtil.getConnection();
+            jedis = new Jedis("hadoop104",6379);
+            jedis.auth("123456");
         }
 
         /**
@@ -48,8 +51,12 @@ public class MySQLTextOutputFormat extends OutputFormat<Text, Text> {
             try {
                 String insertSQL = "insert into tb_call(tellid,dateid,sumcall,sumduration) values(?,?,?,?)";
                 ps = connection.prepareStatement(insertSQL);
-                ps.setString(1, "2");
-                ps.setString(2, "3");
+                String k=key.toString();
+                String[] ks=k.split("_");
+                String tell=ks[0];
+                String date=ks[1];
+                ps.setString(1, jedis.hget("tb_user",tell));
+                ps.setString(2, jedis.hget("tb_date",date));
                 ps.setInt(3, Integer.parseInt(sumCall));
                 ps.setInt(4, Integer.parseInt(sumDuration));
                 ps.executeUpdate();
@@ -81,6 +88,9 @@ public class MySQLTextOutputFormat extends OutputFormat<Text, Text> {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+            }
+            if(jedis!=null){
+                jedis.close();
             }
         }
     }
