@@ -16,6 +16,7 @@
         <module>ct_mapreduce</module>
         <module>ct_analysis</module>
         <module>ct_cache</module>
+        <module>ct_web</module>
     </modules>
 
     <properties>

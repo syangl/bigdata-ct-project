@@ -7,12 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ct_consumer" />
-        <module name="ct_mapreduce" />
+        <module name="ct_analysis" />
         <module name="ct_cache" />
         <module name="ct_producer" />
         <module name="ct_common" />
         <module name="ct_consumer_coprocessor" />
-        <module name="ct_analysis" />
+        <module name="ct_web" />
+        <module name="ct_mapreduce" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">

@@ -1,63 +1,63 @@
 Manifest-Version: 1.0
-Class-Path: jackson-jaxrs-base-2.7.8.jar kerb-simplekdc-1.0.1.jar jcod
- ings-1.0.18.jar commons-collections-3.2.2.jar aopalliance-repackaged-
- 2.5.0-b32.jar protobuf-java-2.5.0.jar jersey-guava-2.25.1.jar hbase-l
- ogging-2.3.7.jar htrace-core4-4.1.0-incubating.jar jackson-mapper-asl
- -1.9.2.jar commons-crypto-1.0.0.jar jetty-server-9.3.24.v20180605.jar
-  jetty-xml-9.3.24.v20180605.jar hadoop-client-3.1.3.jar jetty-util-9.
- 3.24.v20180605.jar hbase-http-2.3.7.jar jersey-json-1.19.jar hbase-sh
- aded-netty-3.3.0.jar kerby-util-1.0.1.jar hk2-locator-2.5.0-b32.jar h
- base-common-2.3.7.jar jackson-module-jaxb-annotations-2.7.8.jar hk2-a
- pi-2.5.0-b32.jar hadoop-distcp-2.10.0.jar jersey-media-jaxb-2.25.1.ja
- r commons-beanutils-1.9.3.jar commons-net-3.6.jar stax2-api-3.1.4.jar
-  kerby-config-1.0.1.jar jetty-servlet-9.3.24.v20180605.jar javax.serv
- let.jsp-2.3.2.jar metrics-core-3.2.6.jar jersey-common-2.25.1.jar jac
- kson-xc-1.9.2.jar kerb-client-1.0.1.jar kerb-crypto-1.0.1.jar hadoop-
- mapreduce-client-core-3.1.3.jar httpcore-4.4.4.jar hbase-asyncfs-2.3.
- 7.jar kerby-xdr-1.0.1.jar jetty-util-ajax-9.3.24.v20180605.jar hbase-
- metrics-api-2.3.7.jar audience-annotations-0.5.0.jar netty-all-4.0.52
- .Final.jar commons-codec-1.11.jar curator-framework-2.13.0.jar mysql-
- connector-java-8.0.27.jar snappy-java-1.0.5.jar jackson-databind-2.7.
- 8.jar javax.ws.rs-api-2.0.1.jar commons-io-2.5.jar hbase-hadoop2-comp
- at-2.3.7.jar kerby-asn1-1.0.1.jar hk2-utils-2.5.0-b32.jar commons-dae
- mon-1.0.13.jar joni-2.1.11.jar hadoop-common-3.1.3.jar javax.annotati
- on-api-1.2.jar commons-logging-1.1.3.jar okio-1.6.0.jar commons-cli-1
- .2.jar okhttp-2.7.5.jar slf4j-api-2.0.0-alpha2.jar jettison-1.1.jar j
- ackson-annotations-2.7.0.jar j2objc-annotations-1.1.jar hbase-zookeep
- er-2.3.7.jar jackson-jaxrs-1.9.2.jar hbase-procedure-2.3.7.jar hbase-
- mapreduce-2.3.7.jar jcip-annotations-1.0-1.jar asm-5.0.4.jar jersey-c
- ore-1.19.jar disruptor-3.4.2.jar hbase-server-2.3.7.jar jersey-servle
- t-1.19.jar woodstox-core-5.0.3.jar jetty-security-9.3.24.v20180605.ja
- r osgi-resource-locator-1.0.1.jar javax.el-3.0.1-b12.jar nimbus-jose-
- jwt-4.41.1.jar hadoop-auth-3.1.3.jar jsp-api-2.1.jar hbase-client-2.3
- .7.jar error_prone_annotations-2.2.0.jar hbase-protocol-2.3.7.jar had
- oop-yarn-common-3.1.3.jar avro-1.7.7.jar jetty-io-9.3.24.v20180605.ja
- r commons-compress-1.18.jar javax.servlet.jsp-api-2.3.1.jar re2j-1.1.
- jar hbase-replication-2.3.7.jar commons-lang-2.6.jar javassist-3.20.0
- -GA.jar log4j-1.2.17.jar javax.servlet-api-3.1.0.jar jackson-core-2.7
- .8.jar httpclient-4.5.2.jar guava-27.0-jre.jar hadoop-yarn-api-3.1.3.
- jar accessors-smart-1.2.jar gson-2.2.4.jar hadoop-hdfs-3.1.3.jar kerb
- -core-1.0.1.jar hbase-shaded-miscellaneous-3.3.0.jar hadoop-annotatio
- ns-3.1.3.jar commons-configuration2-2.1.1.jar hadoop-yarn-client-3.1.
- 3.jar jsr305-3.0.0.jar caffeine-2.8.1.jar jaxb-impl-2.2.3-1.jar hbase
- -hadoop-compat-2.3.7.jar hbase-shaded-protobuf-3.3.0.jar commons-math
- 3-3.1.1.jar curator-recipes-2.13.0.jar curator-client-2.13.0.jar jack
- son-jaxrs-json-provider-2.7.8.jar javax.activation-api-1.2.0.jar hbas
- e-protocol-shaded-2.3.7.jar jersey-container-servlet-core-2.25.1.jar 
- netty-3.10.5.Final.jar json-smart-2.3.jar kerb-util-1.0.1.jar token-p
- rovider-1.0.1.jar jackson-core-asl-1.9.2.jar hadoop-mapreduce-client-
- common-3.1.3.jar jsr311-api-1.1.1.jar commons-lang3-3.4.jar paranamer
- -2.3.jar jetty-webapp-9.3.24.v20180605.jar animal-sniffer-annotations
- -1.17.jar tools.jar failureaccess-1.0.jar kerb-common-1.0.1.jar jamon
- -runtime-2.4.1.jar hadoop-hdfs-client-3.1.3.jar kerb-identity-1.0.1.j
- ar slf4j-log4j12-2.0.0-alpha2.jar zookeeper-3.4.13.jar hadoop-mapredu
- ce-client-jobclient-3.1.3.jar kerb-admin-1.0.1.jar leveldbjni-all-1.8
- .jar kerby-pkix-1.0.1.jar jersey-server-2.25.1.jar jersey-client-2.25
- .1.jar jline-0.9.94.jar jetty-http-9.3.24.v20180605.jar checker-qual-
- 2.5.2.jar jsch-0.1.54.jar hbase-shaded-gson-3.3.0.jar validation-api-
- 1.1.0.Final.jar hbase-metrics-2.3.7.jar kerb-server-1.0.1.jar jaxb-ap
- i-2.2.11.jar listenablefuture-9999.0-empty-to-avoid-conflict-with-gua
- va.jar jersey-client-1.19.jar jersey-server-1.19.jar javax.inject-2.5
- .0-b32.jar
+Class-Path: httpcore-4.4.4.jar hadoop-mapreduce-client-common-3.1.3.ja
+ r hbase-logging-2.3.7.jar joni-2.1.11.jar kerb-server-1.0.1.jar woods
+ tox-core-5.0.3.jar jackson-jaxrs-base-2.7.8.jar slf4j-api-2.0.0-alpha
+ 2.jar hbase-shaded-gson-3.3.0.jar jsp-api-2.1.jar error_prone_annotat
+ ions-2.2.0.jar paranamer-2.3.jar kerb-core-1.0.1.jar hbase-protocol-2
+ .3.7.jar token-provider-1.0.1.jar commons-configuration2-2.1.1.jar co
+ mmons-lang-2.6.jar jackson-jaxrs-json-provider-2.7.8.jar jline-0.9.94
+ .jar json-smart-2.3.jar jsch-0.1.54.jar kerby-asn1-1.0.1.jar zookeepe
+ r-3.4.13.jar hk2-api-2.5.0-b32.jar javax.inject-2.5.0-b32.jar kerb-ut
+ il-1.0.1.jar jetty-util-9.3.24.v20180605.jar commons-cli-1.2.jar nett
+ y-3.10.5.Final.jar hbase-shaded-protobuf-3.3.0.jar jersey-guava-2.25.
+ 1.jar hadoop-annotations-3.1.3.jar jaxb-api-2.2.11.jar jersey-common-
+ 2.25.1.jar jsr305-3.0.0.jar hadoop-client-3.1.3.jar jaxb-impl-2.2.3-1
+ .jar listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar c
+ ommons-beanutils-1.9.3.jar hadoop-distcp-2.10.0.jar stax2-api-3.1.4.j
+ ar jersey-client-2.25.1.jar jcodings-1.0.18.jar hk2-locator-2.5.0-b32
+ .jar kerby-xdr-1.0.1.jar netty-all-4.0.52.Final.jar hbase-shaded-nett
+ y-3.3.0.jar hbase-server-2.3.7.jar hbase-procedure-2.3.7.jar commons-
+ io-2.5.jar jamon-runtime-2.4.1.jar commons-pool2-2.6.2.jar hbase-prot
+ ocol-shaded-2.3.7.jar jersey-media-jaxb-2.25.1.jar jersey-container-s
+ ervlet-core-2.25.1.jar asm-5.0.4.jar hbase-shaded-miscellaneous-3.3.0
+ .jar hbase-metrics-api-2.3.7.jar avro-1.7.7.jar checker-qual-2.5.2.ja
+ r hbase-hadoop2-compat-2.3.7.jar snappy-java-1.0.5.jar hadoop-common-
+ 3.1.3.jar leveldbjni-all-1.8.jar commons-daemon-1.0.13.jar mysql-conn
+ ector-java-8.0.27.jar jackson-jaxrs-1.9.2.jar commons-codec-1.11.jar 
+ hbase-http-2.3.7.jar kerb-admin-1.0.1.jar hadoop-auth-3.1.3.jar hadoo
+ p-yarn-common-3.1.3.jar hk2-utils-2.5.0-b32.jar hbase-common-2.3.7.ja
+ r curator-client-2.13.0.jar hadoop-yarn-client-3.1.3.jar jetty-webapp
+ -9.3.24.v20180605.jar log4j-1.2.17.jar jackson-module-jaxb-annotation
+ s-2.7.8.jar jetty-servlet-9.3.24.v20180605.jar hadoop-mapreduce-clien
+ t-jobclient-3.1.3.jar audience-annotations-0.5.0.jar kerb-client-1.0.
+ 1.jar hbase-replication-2.3.7.jar htrace-core4-4.1.0-incubating.jar c
+ ommons-math3-3.1.1.jar jetty-server-9.3.24.v20180605.jar jackson-anno
+ tations-2.7.0.jar hbase-asyncfs-2.3.7.jar jsr311-api-1.1.1.jar aopall
+ iance-repackaged-2.5.0-b32.jar validation-api-1.1.0.Final.jar commons
+ -crypto-1.0.0.jar javax.el-3.0.1-b12.jar accessors-smart-1.2.jar java
+ ssist-3.20.0-GA.jar javax.annotation-api-1.2.jar jackson-mapper-asl-1
+ .9.2.jar disruptor-3.4.2.jar javax.ws.rs-api-2.0.1.jar kerby-pkix-1.0
+ .1.jar jersey-servlet-1.19.jar hadoop-yarn-api-3.1.3.jar jetty-securi
+ ty-9.3.24.v20180605.jar kerb-common-1.0.1.jar javax.servlet.jsp-2.3.2
+ .jar jetty-util-ajax-9.3.24.v20180605.jar hbase-zookeeper-2.3.7.jar j
+ avax.servlet-api-3.1.0.jar metrics-core-3.2.6.jar caffeine-2.8.1.jar 
+ jcip-annotations-1.0-1.jar j2objc-annotations-1.1.jar nimbus-jose-jwt
+ -4.41.1.jar hbase-mapreduce-2.3.7.jar javax.activation-api-1.2.0.jar 
+ jetty-xml-9.3.24.v20180605.jar jackson-xc-1.9.2.jar hbase-client-2.3.
+ 7.jar commons-net-3.6.jar commons-lang3-3.4.jar jackson-core-2.7.8.ja
+ r commons-compress-1.18.jar jedis-3.1.0.jar guava-27.0-jre.jar jettis
+ on-1.1.jar jersey-server-1.19.jar kerby-config-1.0.1.jar jersey-clien
+ t-1.19.jar jetty-http-9.3.24.v20180605.jar protobuf-java-2.5.0.jar hb
+ ase-hadoop-compat-2.3.7.jar okio-1.6.0.jar kerb-simplekdc-1.0.1.jar r
+ e2j-1.1.jar curator-framework-2.13.0.jar jetty-io-9.3.24.v20180605.ja
+ r jersey-json-1.19.jar gson-2.2.4.jar hadoop-hdfs-3.1.3.jar kerb-iden
+ tity-1.0.1.jar hadoop-hdfs-client-3.1.3.jar jackson-core-asl-1.9.2.ja
+ r hadoop-mapreduce-client-core-3.1.3.jar curator-recipes-2.13.0.jar h
+ base-metrics-2.3.7.jar tools.jar jackson-databind-2.7.8.jar okhttp-2.
+ 7.5.jar httpclient-4.5.2.jar jersey-core-1.19.jar javax.servlet.jsp-a
+ pi-2.3.1.jar animal-sniffer-annotations-1.17.jar osgi-resource-locato
+ r-1.0.1.jar kerb-crypto-1.0.1.jar jersey-server-2.25.1.jar commons-co
+ llections-3.2.2.jar commons-logging-1.1.3.jar kerby-util-1.0.1.jar fa
+ ilureaccess-1.0.jar slf4j-log4j12-2.0.0-alpha2.jar
 Main-Class: com.nd.ct.analysis.AnalysisData
 

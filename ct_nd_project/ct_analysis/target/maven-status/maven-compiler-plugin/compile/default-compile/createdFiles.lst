@@ -1,6 +1,6 @@
-com\nd\ct\analysis\tool\AnalysisTextTool.class
-com\nd\ct\analysis\reducer\AnalysisTextReducer.class
-com\nd\ct\analysis\io\MySQLTextOutputFormat$MySQLRecordWriter.class
 com\nd\ct\analysis\io\MySQLTextOutputFormat.class
+com\nd\ct\analysis\tool\AnalysisTextTool.class
 com\nd\ct\analysis\mapper\AnalysisTextMapper.class
+com\nd\ct\analysis\reducer\AnalysisTextReducer.class
 com\nd\ct\analysis\AnalysisData.class
+com\nd\ct\analysis\io\MySQLTextOutputFormat$MySQLRecordWriter.class
